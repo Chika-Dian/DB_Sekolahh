@@ -46,3 +46,33 @@ values
 (8, 'Bahasa Mandarin', 60);
 select * from nilai;
 
+
+
+
+-- ini untuk menghitung nilai rata-rata pada masing-masing siswa
+SELECT siswa.nama, AVG(nilai.nilai) AS rata_nilai
+FROM siswa
+JOIN nilai ON siswa.id = nilai.id_siswa
+GROUP BY siswa.nama;
+
+-- update pada tabel nilai kolom mata_pelajaran value Manajemen
+-- menjadi value Kearsipan
+UPDATE nilai
+SET mata_pelajaran = 'Bahasa Jerman'
+WHERE mata_pelajaran = 'Bahasa Mandarin';
+-- menampilkan hasil dari update
+select * from nilai;
+
+-- menghapus value=Kearsipan dari kolom mata_pelajaran pada tabel nilai
+delete from nilai
+where mata_pelajaran = 'Bahasa Jerman';
+-- menampilkan hasil dari delete
+select * from nilai;
+
+-- menghapus semua record di tabel
+truncate table nilai;
+-- menghapus semua record di tabel tetapi pada nmr id memulai dari awal/mulai dari angka 1 kembali
+truncate table nilai restart identity;
+-- menghapus database
+drop database sekolah;
+
